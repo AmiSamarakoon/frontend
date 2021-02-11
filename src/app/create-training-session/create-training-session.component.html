@@ -1,0 +1,95 @@
+<div class="col-md-6 offset-md-3">
+
+    <h3>
+        Create Training Session
+    </h3>
+    <form (ngSubmit) ="onSubmit()">
+    
+        <div class="form-group">
+            <label>
+                Session Name
+            </label>
+    
+            <input type="text" class="form-control" id="sessionName"
+                [(ngModel)]="trainingSession.sessionName" name="sessionName">
+    
+        </div>
+    
+        <div class="form-group">
+            <label >
+                Start Date
+            </label>
+    
+            <input type="date" class="form-control" id="startDate"
+                [(ngModel)]="trainingSession.startDate" name="startDate">
+    
+        </div>
+    
+        <div class="form-group">
+            <label >
+                Duration
+            </label>
+    
+            <input type="number" class="form-control" id="duration"
+                [(ngModel)]="trainingSession.duration" name="duration">
+    
+        </div>
+    
+        <div class="form-group">
+            <label >
+                Max Participants
+            </label>
+    
+            <input type="number" class="form-control" id="maxParticipants"
+                [(ngModel)]="trainingSession.maxParticipants" name="maxParticipants">
+    
+        </div>
+    
+        <div class="form-group">
+            <label >
+                IFS Application Version
+            </label>
+    
+            <input type="text" class="form-control" id="ifsApplicationVersion"
+                [(ngModel)]="trainingSession.ifsApplicationVersion" name="ifsApplicationVersion">
+    
+        </div>
+    
+        <div class="form-group">
+            <label >
+                Buffer Time
+    
+            </label>
+    
+            <input type="number" class="form-control" id="bufferTime"
+                [(ngModel)]="trainingSession.bufferTime" name="bufferTime">
+    
+        </div>
+    
+        <div class="form-group">
+            <label >
+                Manager Comment
+            </label>
+    
+            <input type="text" class="form-control" id="managerComment"
+                [(ngModel)]="trainingSession.managerComment" name="managerComment">
+    
+        </div>
+    
+        <div class="form-group">
+            <label >
+                Delivery Method
+    
+            </label>
+    
+            <input type="text" class="form-control" id="deliveryMethod"
+                [(ngModel)]="trainingSession.deliveryMethod" name="deliveryMethod">
+    
+        </div>
+    
+        <button class="btn btn-dark" type="submit">Create Session</button>
+    
+    </form>
+
+</div>-->
+
