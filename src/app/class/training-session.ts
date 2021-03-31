@@ -1,3 +1,6 @@
+import { VirtualMachine } from './virtual-machine';
+
+
 export class TrainingSession {
     id:number;
     sessionName:String;
@@ -8,4 +11,8 @@ export class TrainingSession {
     bufferTime:number;
     managerComment:String;
     deliveryMethod:String;
+    virtualMachines : VirtualMachine[];
+    vmIds :number[];
+    trainerids :number[];
+
 }

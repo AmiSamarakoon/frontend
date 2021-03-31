@@ -19,4 +19,12 @@ export class VirtualMachineService {
   getVirtualMachineList():Observable<VirtualMachine[]>{
     return this.httpClient.get<VirtualMachine[]>(`${this.baseURL}`)
   }
+
+  getVirtualMachinebyId( virtualMachineId: number):Observable<VirtualMachine>{
+    return this.httpClient.get<VirtualMachine>(`${this.baseURL}/${virtualMachineId}`)
+  }
+
+
+
+
 }

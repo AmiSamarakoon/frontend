@@ -14,8 +14,6 @@ import { UpdateTrainingSessionComponent } from './update-training-session/update
 import { TrainerListComponent } from './trainer-list/trainer-list.component';
 import { AddVirtualMachineComponent } from './add-virtual-machine/add-virtual-machine.component';
 import { VirtualMachineListComponent } from './virtual-machine-list/virtual-machine-list.component';
-import { NgxPermissionsGuard } from 'ngx-permissions';
-import { AuthGuard } from './services/auth.guard';
 
 
 
@@ -28,17 +26,17 @@ const routes: Routes = [
   { path : 'trainerlist', component: TrainerListComponent},
   { path : 'depmanager',component:DepManagerComponent},
   { path : 'signup', component:SignupComponent},
-//
-  { path :'create-training-session',component: CreateTrainingSessionComponent, canActivate: [AuthGuard] },
+  { path :'create-training-session',component: CreateTrainingSessionComponent},
   { path : 'trainingSessions',component: TrainingSessionListComponent},
   { path : 'training-session-details/:id', component: TrainingSessionDetailsComponent},
   { path :'update-training-session/:id', component: UpdateTrainingSessionComponent},
-  { path :'add-virtual-machines', component:AddVirtualMachineComponent, canActivate: [AuthGuard]},
+  { path :'add-virtual-machines', component:AddVirtualMachineComponent},
   { path :'virtualMachines', component:VirtualMachineListComponent}
-
+  
 ];
-@NgModule({
 
+@NgModule({
+  
   imports: [RouterModule.forRoot(routes)],
   exports:[ RouterModule ]
 })

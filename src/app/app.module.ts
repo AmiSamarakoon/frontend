@@ -18,9 +18,6 @@ import { UpdateTrainingSessionComponent } from './update-training-session/update
 import { TrainerListComponent } from './trainer-list/trainer-list.component';
 import { AddVirtualMachineComponent } from './add-virtual-machine/add-virtual-machine.component';
 import { VirtualMachineListComponent } from './virtual-machine-list/virtual-machine-list.component';
-import { NgxPermissionsModule } from 'ngx-permissions';
-import { AuthGuard } from './services/auth.guard';
-
 
 @NgModule({
   declarations: [
@@ -38,17 +35,15 @@ import { AuthGuard } from './services/auth.guard';
     TrainerListComponent,
     AddVirtualMachineComponent,
     VirtualMachineListComponent,
-
+    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule,
-    NgxPermissionsModule.forRoot()
+    FormsModule
   ],
-  providers: [{provide :HTTP_INTERCEPTORS,useClass : AuthInterceptor, multi :true}, AuthGuard],
+  providers: [{provide :HTTP_INTERCEPTORS,useClass : AuthInterceptor, multi :true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
-export class SharedModule { }

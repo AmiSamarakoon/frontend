@@ -1,6 +1,4 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { NgxPermissionsService } from 'ngx-permissions';
 import { TokenStorageService } from './auth/token-storage.service';
 
 @Component({
@@ -13,10 +11,9 @@ export class AppComponent implements OnInit{
   roles: string[];
   authority :string;
 
-  constructor(private tokenStorage: TokenStorageService, private permissionsService: NgxPermissionsService, private http: HttpClient){}
+  constructor(private tokenStorage: TokenStorageService){}
 
-  ngOnInit(){
-
+  ngOnInit(){ 
     if (this.tokenStorage.getToken()) {
       this.roles = this.tokenStorage.getAuthorities();
       this.roles.every(role => {
@@ -28,10 +25,9 @@ export class AppComponent implements OnInit{
         else{
           this.authority = 'trainer';
         }
-
+        
       });
     }
-
   }
 }
 

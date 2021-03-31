@@ -54,7 +54,7 @@
                 [(ngModel)]="trainingSession.ifsApplicationVersion" name="ifsApplicationVersion">
     
         </div>
-    
+    <!--check-->
         <div class="form-group">
             <label >
                 Buffer Time
@@ -90,6 +90,44 @@
         <button class="btn btn-dark" type="submit">Create Session</button>
     
     </form>
+
+    <form (ngSubmit) ="addVm()">
+        
+        <div class="form-group">
+            <label style="color: black;">
+                VM ID
+            </label>
+    
+            <input type="number" class="form-control" id="vmId"
+                [(ngModel)]="virtualMachineId" name="vmId">
+    
+        </div>
+
+        <Br>
+        <button class="btn btn-dark" type="submit">Add Vm</button>
+
+    </form>
+
+
+    <form (ngSubmit) ="addTrainer()">
+        
+        <div class="form-group">
+            <label style="color: black;">
+                Trainer ID
+            </label>
+    
+            <input type="number" class="form-control" id="trainerId"
+                [(ngModel)]="trainerId" name="trainerId">
+    
+        </div>
+
+        <Br>
+        <button class="btn btn-dark" type="submit">Add trainer</button>
+
+    </form>
+
+
+
 
 </div>-->
 
