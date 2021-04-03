@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { AuthGuard } from './services/auth.guard';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from './home/home.component';
@@ -10,7 +11,8 @@ import { ManagerComponent } from './manager/manager.component';
 import { TrainerComponent } from './trainer/trainer.component';
 import {AuthInterceptor } from './auth/auth.interceptor';
 import { DepManagerComponent } from './dep-manager/dep-manager.component';
-import { SignupComponent } from './signup/signup.component';
+import { AddTrainerComponent } from './add-trainer/add-trainer.component';
+import { ViewTrainerComponent } from './view-trainer/view-trainer.component';
 import { CreateTrainingSessionComponent } from './create-training-session/create-training-session.component';
 import { TrainingSessionListComponent } from './training-session-list/training-session-list.component';
 import { TrainingSessionDetailsComponent } from './training-session-details/training-session-details.component';
@@ -27,7 +29,8 @@ import { VirtualMachineListComponent } from './virtual-machine-list/virtual-mach
     ManagerComponent,
     TrainerComponent,
     DepManagerComponent,
-    SignupComponent,
+    AddTrainerComponent,
+    ViewTrainerComponent,
     CreateTrainingSessionComponent,
     TrainingSessionListComponent,
     TrainingSessionDetailsComponent,
@@ -35,7 +38,7 @@ import { VirtualMachineListComponent } from './virtual-machine-list/virtual-mach
     TrainerListComponent,
     AddVirtualMachineComponent,
     VirtualMachineListComponent,
-    
+
   ],
   imports: [
     BrowserModule,
@@ -43,7 +46,7 @@ import { VirtualMachineListComponent } from './virtual-machine-list/virtual-mach
     HttpClientModule,
     FormsModule
   ],
-  providers: [{provide :HTTP_INTERCEPTORS,useClass : AuthInterceptor, multi :true}],
+  providers: [{provide :HTTP_INTERCEPTORS,useClass : AuthInterceptor, multi :true}, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -55,6 +55,23 @@ export class CreateTrainingSessionComponent implements OnInit {
 
   }
 
+  getAvailableVM(){
+
+console.log( this.trainingSession.startDate)
+
+     this.virtualMachineService.getAvailableVirtualMachineList(this.trainingSession.startDate).subscribe(data=>{
+      console.log(data);
+    },
+    error => console.error(error));
+
+
+
+  }
+
+
+
+
+
   addTrainer(){
 
     this.trainerIds.push(this.trainerId);   
