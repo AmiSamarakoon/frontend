@@ -14,5 +14,6 @@ export class TrainingSession {
     virtualMachines : VirtualMachine[];
     vmIds :number[];
     trainerids :number[];
+    type:string;
 
 }

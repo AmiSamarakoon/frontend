@@ -75,6 +75,17 @@
                 [(ngModel)]="trainingSession.managerComment" name="managerComment">
     
         </div>
+
+
+        <div class="form-group">
+            <label >
+                    Training Session Type
+            </label>
+    
+            <input type="text" class="form-control" id="trainingSessionType"
+                [(ngModel)]="trainingSession.type" name="trainingSessionType">
+    
+        </div>
     
         <div class="form-group">
             <label >
@@ -124,6 +135,19 @@
 
     </form>
 
+    <form (ngSubmit) ="getAvailableTrainers()">
+        
+        <div class="form-group">
+            <label style="color: black;">
+                Available Trainer's According Type
+            </label>
+        
+        </div>
+
+        <Br>
+        <button class="btn btn-dark" type="submit">Get Available Traier's</button>
+
+    </form>
 
     <form (ngSubmit) ="addTrainer()">
         
