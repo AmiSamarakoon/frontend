@@ -72,7 +72,7 @@ console.log( this.trainingSession.startDate)
 
   getAvailableTrainers(){
 
-    console.log('getting available virtual machines')
+    console.log('getting available Trainers')
     
           let type  = this.trainingSession.type;
 
