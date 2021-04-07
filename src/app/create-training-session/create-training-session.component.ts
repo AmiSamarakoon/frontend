@@ -6,6 +6,7 @@ import {VirtualMachineService} from '../services/virtual-machine.service';
 
 import {TrainerService} from '../services/trainer.service';
 import { Trainer } from '../class/trainer';
+import { VirtualMachine } from '../class/virtual-machine';
 
 
 
@@ -21,6 +22,7 @@ export class CreateTrainingSessionComponent implements OnInit {
   trainerIds :number[] = [];
   trainerId :number = 0;
   trainers : Trainer[];
+  virtualMachines : VirtualMachine[];
 
 
   virtualMachineId :number = 0;

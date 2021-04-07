@@ -114,6 +114,15 @@
         <Br>
         <button class="btn btn-dark" type="submit">Get Available VM's</button>
 
+        <li *ngFor ="let tempProductcategory of virtualMachines" >
+
+           
+                {{tempProductcategory.virtualMachineId}}    
+          
+            
+        </li>
+
+
     </form>
 
 
@@ -147,6 +156,16 @@
         <Br>
         <button class="btn btn-dark" type="submit">Get Available Traier's</button>
 
+                    
+    <li *ngFor ="let tempProductcategory of trainers" >
+
+        
+            {{tempProductcategory.name}}    
+        
+        
+    </li>
+    
+
     </form>
 
     <form (ngSubmit) ="addTrainer()">
@@ -170,4 +189,7 @@
 
 
 </div>-->
+
+            
+            
 
