@@ -21,7 +21,7 @@
             </label>
     
             <input type="date" class="form-control" id="startDate"
-                [(ngModel)]="trainingSession.startDate" name="startDate">
+            (change)= "getAvailableTrainers() ; getAvailableVM()" [(ngModel)]="trainingSession.startDate" name="startDate">
     
         </div>
     
@@ -83,7 +83,7 @@
             </label>
     
             <input type="text" class="form-control" id="trainingSessionType"
-                [(ngModel)]="trainingSession.type" name="trainingSessionType">
+            (change)= "getAvailableTrainers()" [(ngModel)]="trainingSession.type" name="trainingSessionType">
     
         </div>
     
@@ -157,16 +157,27 @@
         <button class="btn btn-dark" type="submit">Get Available Traier's</button>
 
                     
-    <li *ngFor ="let tempProductcategory of trainers" >
+    <li *ngFor ="let tempTrainer of trainers" >
 
         
-            {{tempProductcategory.name}}    
+           Id is : {{tempTrainer.trainerId}}  Name :  {{tempTrainer.name}}  specialities  are {{tempTrainer.qualifications}}  
         
         
     </li>
     
 
+
+
     </form>
+
+
+     
+    <select [(ngModel)]="trainerId">
+        <option [ngValue]="null" [disabled]="true" >Trainers Available</option>
+        <option *ngFor="let trainer of trainers" [value]="trainer.trainerId">
+            Id is : {{trainer.trainerId}}  Name :  {{trainer.name}}  specialities  are {{trainer.qualifications}}  
+        </option>
+    </select>   
 
     <form (ngSubmit) ="addTrainer()">
         
@@ -174,11 +185,7 @@
             <label style="color: black;">
                 Trainer ID
             </label>
-    
-            <input type="number" class="form-control" id="trainerId"
-                [(ngModel)]="trainerId" name="trainerId">
-    
-        </div>
+                </div>
 
         <Br>
         <button class="btn btn-dark" type="submit">Add trainer</button>

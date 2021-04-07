@@ -4,6 +4,8 @@ export class SignupInfo {
     email: string;
     role: string[];
     password: string;
+    type : String;
+    
     
  
     constructor(name: string, username: string, email: string, password: string) {

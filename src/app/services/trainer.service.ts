@@ -23,5 +23,9 @@ export class TrainerService {
   }
 
 
+  addTrainer(trainer:Trainer):Observable<Object>{
+    return this.httpClient.post(`${this.tainerURL}`, trainer);
+  }
+
 
 }
