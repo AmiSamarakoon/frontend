@@ -28,4 +28,10 @@ export class TrainerService {
   }
 
 
+
+  getTrainerbyId( trainerId: number):Observable<Trainer>{
+    return this.httpClient.get<Trainer>(`${this.tainerURL}/${trainerId}`)
+  }
+
+
 }

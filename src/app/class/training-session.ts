@@ -1,3 +1,4 @@
+import { Trainer } from './trainer';
 import { VirtualMachine } from './virtual-machine';
 
 
@@ -12,6 +13,7 @@ export class TrainingSession {
     managerComment:String;
     deliveryMethod:String;
     virtualMachines : VirtualMachine[];
+    trainers : Trainer[];
     vmIds :number[];
     trainerids :number[];
     type:string;
