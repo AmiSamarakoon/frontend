@@ -66,6 +66,7 @@ console.log( this.trainingSession.startDate)
 
      this.virtualMachineService.getAvailableVirtualMachineList(this.trainingSession.startDate).subscribe(data=>{
       console.log(data);
+      this.virtualMachines = data;
     },
     error => console.error(error));
 

@@ -1,7 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { TokenStorageService } from '../auth/token-storage.service';
 import { TrainingSession } from '../class/training-session';
 import { TrainingSessionService } from '../services/training-session.service';
+
+
+interface Info{
+  token: string;
+  username: string;
+  authorities: string[];
+}
 
 
 @Component({
@@ -11,18 +19,46 @@ import { TrainingSessionService } from '../services/training-session.service';
 })
 export class TrainingSessionListComponent implements OnInit {
 
+
+  info: Info;
   trainingSessions: TrainingSession[];
 
-  constructor(private trainingSessionService:TrainingSessionService,private router:Router) { }
+  constructor(private trainingSessionService:TrainingSessionService,private router:Router , private token: TokenStorageService) { }
 
   ngOnInit(): void {
+
+    const token = this.token.getToken();
+    const username = this.token.getUsername();
+    const authorities = this.token.getAuthorities();
+    this.info = {
+      token: token,
+      username: username,
+      authorities: authorities
+    };
+
     this.getTrainingSessions();
   }
 
   private getTrainingSessions(){
-    this.trainingSessionService.getTrainingSessionList().subscribe(data=>{
-      this.trainingSessions = data;
-    });
+    
+    if(this.info.username == 'rajith'){
+      this.trainingSessionService.getTrainingSessionList().subscribe(data=>{
+        this.trainingSessions = data;
+      });
+
+    }else{
+      this.trainingSessionService.getTrainingSessionListByTrainer(this.info.username).subscribe(data=>{
+        this.trainingSessions = data;
+      });
+
+    }
+    
+ 
+
+
+
+
+
   }
 
   trainingSessionDetails(id:number){

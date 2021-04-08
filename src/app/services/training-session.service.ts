@@ -9,11 +9,17 @@ import { TrainingSession } from '../class/training-session';
 export class TrainingSessionService {
 
   private baseURL ="http://localhost:8080/api/trainingSessions";
+  private baseURL2 = "http://localhost:8080/api/trainingSessionByTrainer";
+
 
   constructor(private httpClient:HttpClient) { }
 
   getTrainingSessionList():Observable<TrainingSession[]>{
     return this.httpClient.get<TrainingSession[]>(`${this.baseURL}`)
+  }
+
+  getTrainingSessionListByTrainer(username : string):Observable<TrainingSession[]>{
+    return this.httpClient.get<TrainingSession[]>(`${this.baseURL2}/${username}`)
   }
 
   createTrainingSession(trainingSession:TrainingSession):Observable<Object>{
