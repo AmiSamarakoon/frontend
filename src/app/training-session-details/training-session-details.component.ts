@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { TrainingSession } from '../class/training-session';
+import { VirtualMachine } from '../class/virtual-machine';
 import { TrainingSessionService } from '../services/training-session.service';
+import { VirtualMachineService } from '../services/virtual-machine.service';
 
 @Component({
   selector: 'app-training-session-details',
@@ -12,15 +14,42 @@ export class TrainingSessionDetailsComponent implements OnInit {
 
   id:number;
   trainingSession: TrainingSession;
-  constructor(private route:ActivatedRoute, private trainingSessionService: TrainingSessionService) { }
+  tentativeVirtualMachines: any;
+  freeVirtualMachines:any;
+  start_Date: Date;
+
+  constructor(private route:ActivatedRoute, private trainingSessionService: TrainingSessionService, private virtualMachineService: VirtualMachineService) { }
 
   ngOnInit(): void {
+
     this.id=this.route.snapshot.params['id'];
+    //this.start_Date=this.route.snapshot.params['startDate'];
 
     this.trainingSession= new TrainingSession();
     this.trainingSessionService.getTrainingSessionById(this.id).subscribe( data=>{
       this.trainingSession= data;
     });
+
+    this.virtualMachineService.getVirtualMachineByTrainingSessions(this.id).subscribe( data=>{
+      this.tentativeVirtualMachines= data;
+    });
+
+    this.start_Date=this.trainingSession.startDate;
+
+
+
+
   }
+
+  getAvailableVM(){
+
+    console.log( this.trainingSession.startDate)
+
+         this.virtualMachineService.getAvailableVirtualMachineList(this.trainingSession.startDate).subscribe(data=>{
+          this.freeVirtualMachines=data;
+        },
+        error => console.error(error));
+
+      }
 
 }

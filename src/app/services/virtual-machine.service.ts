@@ -10,7 +10,7 @@ export class VirtualMachineService {
 
   private baseURL ="http://localhost:8080/api/virtualMachines";
   private availableVMs ="http://localhost:8080/api/availableVirtualMachines";
-
+  private availableVMsForTS ="http://localhost:8080/api/virtualMachines-trainingSession";
 
   constructor(private httpClient: HttpClient) { }
 
@@ -33,6 +33,10 @@ export class VirtualMachineService {
 
   getAvailableVirtualMachineList(startDate:Date):Observable<VirtualMachine[]>{
     return this.httpClient.get<VirtualMachine[]>(`${this.availableVMs}/${startDate}`)
+  }
+
+  getVirtualMachineByTrainingSessions(trainingSessionId: number):Observable<VirtualMachine[]>{
+    return this.httpClient.get<VirtualMachine[]>(`${this.availableVMsForTS}/${trainingSessionId}`)
   }
 
 

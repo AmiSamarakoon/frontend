@@ -41,13 +41,16 @@
 
 
       <td>
-        <button (click)="updateTrainingSession(trainingSession.id)" class="btn btn-warning">Update</button>
+        <button (click)="updateTrainingSession(trainingSession.id)" *ngIf="authority === 'manager'"
+          class="btn btn-warning">Update</button>
 
-        <button (click)="deleteTrainingSession(trainingSession.id)" class="btn btn-danger"
-          style="margin-left: 10px;">Delete</button>
+
+        <button (click)="deleteTrainingSession(trainingSession.id)" *ngIf="authority === 'manager'"
+          class="btn btn-danger" style="margin-left: 10px;">Delete</button>
 
         <button (click)="trainingSessionDetails(trainingSession.id)" class="btn btn-info"
           style="margin-left: 10px;">View</button>
+
       </td>
     </tr>
   </tbody>
