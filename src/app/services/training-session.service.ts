@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { TrainingSession } from '../class/training-session';
+import { SortRequestTrainingSessions } from '../class/sort-request-training-sessions';
+
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +11,9 @@ import { TrainingSession } from '../class/training-session';
 export class TrainingSessionService {
 
   private baseURL ="http://localhost:8080/api/trainingSessions";
+  private sortedTrainingSessionURL ="http://localhost:8080/api/sort/trainingSessions";
+  private baseURL2 = "http://localhost:8080/api/trainingSessionByTrainer";
+
 
   constructor(private httpClient:HttpClient) { }
 
@@ -30,4 +35,14 @@ export class TrainingSessionService {
   deleteTrainingSession(id:number):Observable<Object>{
     return this.httpClient.delete(`${this.baseURL}/${id}`);
   }
+  getSortedTrainingSessions(sortedTrainingSession: SortRequestTrainingSessions):Observable<Object>{
+    return this.httpClient.post(`${this.sortedTrainingSessionURL}`, sortedTrainingSession);
+  }
+
+
+  getTrainingSessionListByTrainer(username : string):Observable<TrainingSession[]>{
+    return this.httpClient.get<TrainingSession[]>(`${this.baseURL2}/${username}`)
+  }
+
+
 }

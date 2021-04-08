@@ -33,7 +33,7 @@ const routes: Routes = [
   { path :'create-training-session',component: CreateTrainingSessionComponent,canActivate:[AuthGuard]},
   { path : 'trainingSessions',component: TrainingSessionListComponent},
   { path : 'training-session-details/:id', component: TrainingSessionDetailsComponent},
-  { path :'update-training-session/:id', component: UpdateTrainingSessionComponent},
+  { path :'update-training-session/:id', component: UpdateTrainingSessionComponent, canActivate:[AuthGuard]},
   { path :'add-virtual-machines', component:AddVirtualMachineComponent, canActivate:[AuthGuard]},
   { path :'virtualMachines', component:VirtualMachineListComponent}
 

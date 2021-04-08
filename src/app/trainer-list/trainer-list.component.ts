@@ -18,7 +18,7 @@ export class TrainerListComponent implements OnInit {
     this.getTrainers();
   }
   private getTrainers(){
-    this.trainerService.getTrainerList().subscribe(data=>{
+    this.trainerService.getAllTrainerList().subscribe(data=>{
       this.trainers = data;
     });
   }

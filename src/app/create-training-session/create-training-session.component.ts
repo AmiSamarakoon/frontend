@@ -4,6 +4,9 @@ import { TrainingSession } from '../class/training-session';
 import { TrainingSessionService } from '../services/training-session.service';
 import {VirtualMachineService} from '../services/virtual-machine.service';
 
+import {TrainerService} from '../services/trainer.service';
+import { Trainer } from '../class/trainer';
+import { VirtualMachine } from '../class/virtual-machine';
 
 
 
@@ -16,12 +19,17 @@ export class CreateTrainingSessionComponent implements OnInit {
 
   trainingSession: TrainingSession=new TrainingSession();
   virtualMachineIds :number[] = [];
+  virtualMachineNames :string[] = [];
   trainerIds :number[] = [];
   trainerId :number = 0;
+  trainers : Trainer[];
+  virtualMachines : VirtualMachine[];
 
 
   virtualMachineId :number = 0;
-  constructor(private trainingSessionService:TrainingSessionService, private router:Router ,  private virtualMachineService:VirtualMachineService) { }
+  virtualMachineName :string;
+
+  constructor(private trainingSessionService:TrainingSessionService, private router:Router ,  private virtualMachineService:VirtualMachineService , private trainerService:TrainerService) { }
 
   ngOnInit(): void {
   }
@@ -64,9 +72,23 @@ console.log( this.trainingSession.startDate)
     },
     error => console.error(error));
 
-
-
   }
+
+
+  getAvailableTrainers(){
+
+    console.log('getting available Trainers')
+
+          let type  = this.trainingSession.type;
+
+          this.trainerService.getAvailableTrainerList(type ,this.trainingSession.startDate ).subscribe(data=>{
+            this.trainers = data;
+
+            console.log( this.trainers);
+          },
+          error => console.error(error));
+
+      }
 
 
 
@@ -74,7 +96,7 @@ console.log( this.trainingSession.startDate)
 
   addTrainer(){
 
-    this.trainerIds.push(this.trainerId);   
+    this.trainerIds.push(this.trainerId);
       console.log("Trainer Id pushed" + this.trainerId);
       console.log("Trainer Ids"  + this.trainerIds);
 

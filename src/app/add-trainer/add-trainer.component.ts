@@ -15,6 +15,8 @@ export class AddTrainerComponent implements OnInit {
   isSignedUp = false;
   isSignUpFailed = false;
   errorMessage = '';
+  trainerQualification : string;
+  trainerQualifications : string[] = [];
 
   constructor(private authService: AuthService, private router:Router) { }
 
@@ -29,6 +31,7 @@ export class AddTrainerComponent implements OnInit {
       this.form.name,
       this.form.username,
       this.form.type,
+      this.trainerQualifications,
       this.form.email,
       this.form.contactNo,
       this.form.password);
@@ -48,6 +51,15 @@ export class AddTrainerComponent implements OnInit {
 
     this.router.navigate(['/trainerlist']);
   }
+
+
+  addTrainerQualification(){
+
+    this.trainerQualifications.push(this.trainerQualification);
+    console.log(this.trainerQualifications)
+
+
+}
 
 
 

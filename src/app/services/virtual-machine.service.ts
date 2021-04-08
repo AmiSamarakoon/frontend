@@ -26,6 +26,10 @@ export class VirtualMachineService {
     return this.httpClient.get<VirtualMachine>(`${this.baseURL}/${virtualMachineId}`)
   }
 
+  getVirtualMachinebyName( virtualMachineName: number):Observable<VirtualMachine>{
+    return this.httpClient.get<VirtualMachine>(`${this.baseURL}/${virtualMachineName}`)
+  }
+
 
   getAvailableVirtualMachineList(startDate:Date):Observable<VirtualMachine[]>{
     return this.httpClient.get<VirtualMachine[]>(`${this.availableVMs}/${startDate}`)

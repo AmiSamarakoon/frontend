@@ -55,6 +55,26 @@
           <div *ngIf="password.errors.minlength">Password must be at least 6 characters</div>
         </div>
       </div>
+
+      <form (ngSubmit)="addTrainerQualification()">
+
+        <div class="form-group">
+          <label style="color: black;">
+            Trainer Qualification
+          </label>
+
+          <input type="text" class="form-control" style="text-align: left" id="trainerQualification"
+            [(ngModel)]="trainerQualification" name="trainerQualification">
+
+        </div>
+
+
+        <button class="btn btn-dark" style="text-align: right" type="submit">Add trainer Qualification</button>
+      </form>
+
+
+      <br>
+
       <div class="form-group">
         <button class="btn btn-primary">Register</button>
         <div *ngIf="f.submitted && isSignUpFailed" class="alert alert-warning">

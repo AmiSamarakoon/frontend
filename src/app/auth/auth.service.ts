@@ -30,6 +30,8 @@ export class AuthService {
   }
 
   signUp(info: SignupInfo): Observable<string> {
+    console.log(info);
+    console.log(info.qualifications);
     return this.http.post<string>(this.signupUrl, info, httpOptions);
   }
 
