@@ -28,8 +28,23 @@ export class VirtualMachineService {
 
 
   getAvailableVirtualMachineList(startDate:Date):Observable<VirtualMachine[]>{
-    return this.httpClient.get<VirtualMachine[]>(`${this.availableVMs}/${startDate}`)
-  }
+
+
+       return this.httpClient.get<VirtualMachine[]>(`${this.availableVMs}/${startDate}`)
+  
+  
+      }
+
+      // getAvailableVirtualMachineListFiltered(startDate:Date):Observable<VirtualMachine[]>{
+
+
+      //   return this.httpClient.get(`${this.availableVMs}/${startDate}`).map((response : Response) => response.json())
+   
+   
+      //  }
+
+
+
 
 
 }

@@ -6,7 +6,7 @@
     <div class="row col-sm-6" style="max-width:350px;">
       <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
         <div class="form-group">
-          <label for="name">Your name</label>
+          <label for="name"> Name of the User/ Trainer</label>
           <input type="text" class="form-control" name="name" [(ngModel)]="form.name" #name="ngModel" required />
           <div *ngIf="f.submitted && name.invalid">
             <div *ngIf="name.errors.required">Name is required</div>
@@ -45,6 +45,18 @@
              />
         </div>
 
+        <select name="type" [(ngModel)]="form.type" >
+          <option value="Functional">
+            Functional
+          </option>
+          <option value="Technical">
+              Technical
+            </option>
+  
+            <option value="Developer">
+              Developer
+            </option>
+      </select>
 
         <div class="form-group">
           <button class="btn btn-primary">Register</button>
@@ -73,3 +85,13 @@
     <button class="btn btn-dark" type="submit">Add trainer Qualification</button>
 
 </form>
+
+
+<h6>Added Trainer Qualifications Are </h6>
+
+<li *ngFor ="let temp of trainerQualifications" >
+
+  {{temp}} Qualification is Added
+       
+
+</li>

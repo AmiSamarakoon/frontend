@@ -1,8 +1,8 @@
 <div class="col-md-6 offset-md-3">
 
-    <h3>
+    <h1>
         Create Training Session
-    </h3>
+    </h1>
     <form (ngSubmit) ="onSubmit()">
     
         <div class="form-group">
@@ -78,6 +78,11 @@
 
 
         <div class="form-group">
+            
+            
+  
+            
+            
             <label >
                     Training Session Type
             </label>
@@ -86,6 +91,12 @@
             (change)= "getAvailableTrainers()" [(ngModel)]="trainingSession.type" name="trainingSessionType">
     
         </div>
+
+
+
+
+
+
     
         <div class="form-group">
             <label >
@@ -98,23 +109,24 @@
     
         </div>
     
-        <button class="btn btn-success" type="submit">Create Session</button>
+        <button class="btn btn-success btn-lg btn-block" type="submit">Create Session</button>
     
     </form>
 
+    <h2>Virtual Machine Allocation Section</h2>
+
     <form (ngSubmit) ="getAvailableVM()">
         
-        <div class="form-group">
+     
             <label style="color: black;">
-                Available VM's
+               <h5> Available VM's</h5>
             </label>
         
-        </div>
+        
 
         <Br>
-        <button class="btn btn-dark" type="submit">Get Available VM's</button>
-
-                    
+     
+        <hr>
         <li *ngFor ="let virtualMachine of virtualMachines" >
 
         
@@ -148,21 +160,49 @@
         </div>
 
         <Br>
-        <button class="btn btn-dark" type="submit">Add Vm</button>
+
+           
+        <button class="btn btn-primary" type="submit">Add Vm</button>
 
     </form>
 
+
+    <h6>Added Virtual Machine ID's Are  </h6>
+
+    <li *ngFor ="let temp of virtualMachineIds" >
+    
+     VM Id :  {{temp}}
+           
+    
+    </li>
+
+
+    <h2>Trainer  Allocation Section</h2>
+
+
+    <hr>
+    <h5>Select Training Session Type</h5>
+    <select [(ngModel)]="trainingSession.type" (change)= "getAvailableTrainers()" >
+        <option value="Functional">
+          Functional
+        </option>
+        <option value="Technical">
+            Technical
+          </option>
+
+          <option value="Developer">
+            Developer
+          </option>
+    </select>
+
     <form (ngSubmit) ="getAvailableTrainers()">
         
-        <div class="form-group">
+        
             <label style="color: black;">
-                Available Trainer's According Type
+               <h5> Available Trainer's According Type</h5>
             </label>
         
-        </div>
-
         <Br>
-        <button class="btn btn-dark" type="submit">Get Available Traier's</button>
 
                     
     <li *ngFor ="let tempTrainer of trainers" >
@@ -196,9 +236,18 @@
                 </div>
 
         <Br>
-        <button class="btn btn-dark" type="submit">Add trainer</button>
+        <button class="btn btn-primary" type="submit">Add trainer</button>
 
     </form>
+
+
+    <h6>Added TrainerID's Are  </h6>
+
+    <li *ngFor ="let temp of trainerIds" >
+    
+     Trainer Id :  {{temp}}
+    </li>      
+    
 
 
 

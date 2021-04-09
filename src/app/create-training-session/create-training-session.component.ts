@@ -7,6 +7,7 @@ import {VirtualMachineService} from '../services/virtual-machine.service';
 import {TrainerService} from '../services/trainer.service';
 import { Trainer } from '../class/trainer';
 import { VirtualMachine } from '../class/virtual-machine';
+import { Observable } from 'rxjs';
 
 
 
@@ -23,6 +24,12 @@ export class CreateTrainingSessionComponent implements OnInit {
   trainerId :number = 0;
   trainers : Trainer[];
   virtualMachines : VirtualMachine[];
+
+
+  
+
+  //to check the filtering function
+  virtualMachinesFilterd :  VirtualMachine[] ;
 
 
   virtualMachineId :number = 0;
@@ -102,6 +109,10 @@ console.log( this.trainingSession.startDate)
   }
 
 
+  filterByVersion(){
+
+
+  }
 
 
 
@@ -112,4 +123,6 @@ console.log( this.trainingSession.startDate)
     console.log(this.trainingSession);
     this.saveTrainingSession();
   }
+
+
 }

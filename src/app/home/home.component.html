@@ -1,4 +1,4 @@
- <h1>Welcome to the IFS Trainer Scheduler</h1> 
+ <h2 class="display-3">Welcome to the IFS Trainer Scheduler</h2> 
 
 <div *ngIf ="info.token; else loggedOut">
     <h5 class="text-primary">Your Information</h5>
@@ -13,5 +13,12 @@
 
 
 <ng-template #loggedOut>
-    User is logged Out Please Log In
+  
+
+    <!-- <img src="/assets/image2.jpg" alt="..." class="img-thumbnail"> -->
+    <img src="/assets/ifsimage1.png" alt="..." class="img-thumbnail">
+
+    <hr>
+    <br>
+    <h5> User is logged Out Please Log In </h5>
 </ng-template>
