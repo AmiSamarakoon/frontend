@@ -127,6 +127,8 @@ console.log( this.trainingSession.startDate)
 
   onSubmit(){
 
+    this.trainingSession.ifsApplicationVersion=this.tempProduct;
+
     this.trainingSession.vmIds = this.virtualMachineIds;
     this.trainingSession.trainerids = this.trainerIds;
     console.log(this.trainingSession);
