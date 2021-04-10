@@ -33,6 +33,8 @@ export class TrainingSessionListComponent implements OnInit {
   trainingSessions: any;
   sortedTrainingSessions: SortRequestTrainingSessions = new SortRequestTrainingSessions();
 
+  authority :string;
+
   constructor(private trainingSessionService: TrainingSessionService, private router: Router, private token: TokenStorageService) { }
 
   ngOnInit(): void {
@@ -52,6 +54,7 @@ export class TrainingSessionListComponent implements OnInit {
 
     let flag:boolean = this.info.authorities.every(role => {
       if (role['authority'] === 'ROLE_MANAGER') {
+        this.authority ='manager' ;
         return true ;
       }
         return false;

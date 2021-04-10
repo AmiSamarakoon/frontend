@@ -25,6 +25,12 @@ export class CreateTrainingSessionComponent implements OnInit {
   trainers : Trainer[];
   virtualMachines : VirtualMachine[];
 
+  tempProduct: string;
+
+
+
+
+
 
   virtualMachineId :number = 0;
   virtualMachineName :string;
@@ -32,6 +38,7 @@ export class CreateTrainingSessionComponent implements OnInit {
   constructor(private trainingSessionService:TrainingSessionService, private router:Router ,  private virtualMachineService:VirtualMachineService , private trainerService:TrainerService) { }
 
   ngOnInit(): void {
+
   }
 
   saveTrainingSession(){
@@ -65,9 +72,20 @@ export class CreateTrainingSessionComponent implements OnInit {
 
   getAvailableVM(){
 
+    this.tempProduct = this.trainingSession.ifsApplicationVersion;
+
+    for (var i = 0; i < this.tempProduct.length; i++) {
+      //this.trainingSession.ifsApplicationVersion.charAt(i))
+      if(this.tempProduct.charAt(i)===" "){
+        this.tempProduct= this.tempProduct.replace(this.tempProduct.charAt(i), "-");
+      }
+
+    }
+    console.log(this.tempProduct);
+
 console.log( this.trainingSession.startDate)
 
-     this.virtualMachineService.getAvailableVirtualMachineList(this.trainingSession.startDate).subscribe(data=>{
+     this.virtualMachineService.getAvailableVirtualMachineList(this.trainingSession.startDate,this.tempProduct).subscribe(data=>{
       console.log(data);
     },
     error => console.error(error));

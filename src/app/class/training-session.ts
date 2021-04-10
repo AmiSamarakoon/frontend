@@ -7,7 +7,7 @@ export class TrainingSession {
     startDate:Date;
     duration:number;
     maxParticipants:number;
-    ifsApplicationVersion:String;
+    ifsApplicationVersion:string;
     bufferTime:number;
     managerComment:String;
     deliveryMethod:String;

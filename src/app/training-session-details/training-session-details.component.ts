@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { TrainingSession } from '../class/training-session';
 import { VirtualMachine } from '../class/virtual-machine';
 import { TrainingSessionService } from '../services/training-session.service';
@@ -18,7 +18,10 @@ export class TrainingSessionDetailsComponent implements OnInit {
   freeVirtualMachines:any;
   start_Date: Date;
 
-  constructor(private route:ActivatedRoute, private trainingSessionService: TrainingSessionService, private virtualMachineService: VirtualMachineService) { }
+  virtualMachineId :number = 0;
+  virtualMachineIds :number[] = [];
+
+  constructor(private route:ActivatedRoute, private trainingSessionService: TrainingSessionService, private virtualMachineService: VirtualMachineService, private router:Router) { }
 
   ngOnInit(): void {
 
@@ -45,11 +48,34 @@ export class TrainingSessionDetailsComponent implements OnInit {
 
     console.log( this.trainingSession.startDate)
 
-         this.virtualMachineService.getAvailableVirtualMachineList(this.trainingSession.startDate).subscribe(data=>{
+         this.virtualMachineService.getAvailableVirtualMachineList(this.trainingSession.startDate, this.trainingSession.ifsApplicationVersion).subscribe(data=>{
           this.freeVirtualMachines=data;
         },
         error => console.error(error));
 
+      }
+
+      addVm(){
+
+        this.virtualMachineService.getVirtualMachinebyId(this.virtualMachineId).subscribe(data=>{
+          this.virtualMachineIds.push(this.virtualMachineId);
+          console.log(data);
+          console.log("virtual machines Ids"  + this.virtualMachineIds);
+        },
+        error => console.error(error));
+
+      }
+
+      allocateVMs(){
+        this.trainingSession.vmIds = this.virtualMachineIds;
+        this.trainingSessionService.updateTrainingSessionVm(this.id ,this.trainingSession).subscribe(data=>{
+          console.log(data);
+          this.goToTrainingSessionList();
+        },error =>console.log(error));
+      }
+
+      goToTrainingSessionList(){
+        this.router.navigate(['/trainingSessions']);
       }
 
 }

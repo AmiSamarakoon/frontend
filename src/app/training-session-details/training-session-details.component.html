@@ -1,4 +1,4 @@
-<h3>
+<h3 style="color:black;">
   View Training Session Details
 </h3>
 <div>
@@ -64,7 +64,7 @@
       <b>Tentatively allocated Virtual Machines :</b>
     </label>
     <tr *ngFor="let tentativeVirtualMachine of tentativeVirtualMachines">
-      <td>{{ tentativeVirtualMachine.virtualMachineName }}</td>
+      <td>{{ tentativeVirtualMachine.virtualMachineName }} : Id - {{tentativeVirtualMachine.virtualMachineId}}</td>
     </tr>
   </div>
 
@@ -73,7 +73,7 @@
       <b>Free Virtual Machines :</b>
     </label>
     <tr *ngFor="let freeVirtualMachine of freeVirtualMachines">
-      <td>{{ freeVirtualMachine.virtualMachineName }}</td>
+      <td>{{ freeVirtualMachine.virtualMachineName }} : Id - {{freeVirtualMachine.virtualMachineId}}</td>
     </tr>
   </div>
 
@@ -90,6 +90,29 @@
     <button class="btn btn-dark" type="submit">Get Available VM's</button>
 
   </form>
+
+  <form (ngSubmit)="addVm()">
+
+    <div class="form-group">
+      <label style="color: black;">
+        VM ID
+      </label>
+
+      <input type="number" class="form-control" id="vmId" [(ngModel)]="virtualMachineId" name="vmId">
+
+
+
+
+
+    </div>
+
+    <Br>
+    <button class="btn btn-dark" type="submit">Add Vm</button>
+
+  </form>
+
+  <br>
+  <button class="btn btn-success" (click)="allocateVMs()">Update</button>
 
 
 
