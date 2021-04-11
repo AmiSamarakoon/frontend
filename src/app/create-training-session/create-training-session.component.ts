@@ -19,7 +19,7 @@ export class CreateTrainingSessionComponent implements OnInit {
 
   trainingSession: TrainingSession=new TrainingSession();
   virtualMachineIds :number[] = [];
-  virtualMachineNames :string[] = [];
+ // virtualMachineNames :string[] = [];
   trainerIds :number[] = [];
   trainerId :number = 0;
   trainers : Trainer[];
@@ -33,7 +33,7 @@ export class CreateTrainingSessionComponent implements OnInit {
 
 
   virtualMachineId :number = 0;
-  virtualMachineName :string;
+ // virtualMachineName :string;
 
   constructor(private trainingSessionService:TrainingSessionService, private router:Router ,  private virtualMachineService:VirtualMachineService , private trainerService:TrainerService) { }
 

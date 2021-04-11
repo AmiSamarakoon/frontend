@@ -20,6 +20,9 @@ export class TrainingSessionDetailsComponent implements OnInit {
 
   virtualMachineId :number = 0;
   virtualMachineIds :number[] = [];
+  virtualMachines : VirtualMachine[]=[];
+
+  tempvm: VirtualMachine;
 
   tempProduct: string;
 
@@ -46,6 +49,33 @@ export class TrainingSessionDetailsComponent implements OnInit {
 
   }
 
+  saveTrainingSession(){
+    this.trainingSessionService.updateTrainingSessionVm(this.id,this.trainingSession).subscribe(data=>{
+      console.log(data);
+      this.goToTrainingSessionList();
+    },
+    error => console.error(error));
+  }
+
+  goToTrainingSessionList(){
+    this.router.navigate(['/trainingSessions']);
+  }
+
+  addVm(){
+
+
+     this.virtualMachineService.getVirtualMachinebyId(this.virtualMachineId).subscribe(data=>{
+      this.virtualMachineIds.push(this.virtualMachineId);
+      this.tempvm=data;
+      this.virtualMachines.push(this.tempvm);
+      this.trainingSession.virtualMachines.push(this.tempvm);
+      console.log(data);
+      console.log("virtual machines Ids"  + this.virtualMachineIds);
+    },
+    error => console.error(error));
+
+  }
+
   getAvailableVM(){
 
     this.tempProduct = this.trainingSession.ifsApplicationVersion;
@@ -69,27 +99,21 @@ export class TrainingSessionDetailsComponent implements OnInit {
 
       }
 
-      addVm(){
 
-        this.virtualMachineService.getVirtualMachinebyId(this.virtualMachineId).subscribe(data=>{
-          this.virtualMachineIds.push(this.virtualMachineId);
-          console.log(data);
-          console.log("virtual machines Ids"  + this.virtualMachineIds);
-        },
-        error => console.error(error));
-
-      }
 
       allocateVMs(){
-        this.trainingSession.vmIds = this.virtualMachineIds;
-        this.trainingSessionService.updateTrainingSessionVm(this.id ,this.trainingSession).subscribe(data=>{
-          console.log(data);
-          this.goToTrainingSessionList();
-        },error =>console.log(error));
-      }
+        console.log(this.virtualMachineIds);
+        console.log(this.trainingSession.virtualMachines);
 
-      goToTrainingSessionList(){
-        this.router.navigate(['/trainingSessions']);
+        this.trainingSession.vmIds = this.virtualMachineIds;
+        this.trainingSession.virtualMachines=this.virtualMachines;
+       // this.trainingSession.virtualMachines=this.
+        console.log(this.trainingSession.vmIds);
+        console.log(this.trainingSession.virtualMachines);
+
+        this.saveTrainingSession();
+      //  console.log(this.trainingSession);
+
       }
 
 }
