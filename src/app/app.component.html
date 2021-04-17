@@ -1,4 +1,5 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg bd-navbar" style="position:fixed">
+
 
   <a class="navbar-brand" href="#">IFS</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -48,6 +49,14 @@
         <a class="nav-link" routerLink="virtualMachines">Virtual Machines</a>
       </li>
 
+      <li *ngIf="authority === 'manager'" class="nav-item">
+        <a class="nav-link" routerLink="leavedetails">Leave Details</a>
+      </li>
+
+      <li *ngIf="authority === 'trainer'" class="nav-item">
+        <a class="nav-link" routerLink="leavemanagement">Leave Management</a>
+      </li>
+
       <li *ngIf="!authority" class="nav-item">
         <a class="nav-link" routerLink="auth/login">Login</a>
       </li>
@@ -60,7 +69,7 @@
 
 
 
-
+<br><br>
 
 <div class="container">
   <router-outlet></router-outlet>

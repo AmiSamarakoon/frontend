@@ -16,6 +16,7 @@ export class TrainingSessionDetailsComponent implements OnInit {
   trainingSession: TrainingSession;
   tentativeVirtualMachines: any;
   freeVirtualMachines:any;
+  //allVirtualMachines: any;
   start_Date: Date;
 
   virtualMachineId :number = 0;
@@ -40,6 +41,7 @@ export class TrainingSessionDetailsComponent implements OnInit {
 
     this.virtualMachineService.getVirtualMachineByTrainingSessions(this.id).subscribe( data=>{
       this.tentativeVirtualMachines= data;
+
     });
 
     this.start_Date=this.trainingSession.startDate;
@@ -94,8 +96,10 @@ export class TrainingSessionDetailsComponent implements OnInit {
 
          this.virtualMachineService.getAvailableVirtualMachineList(this.trainingSession.startDate,this.tempProduct).subscribe(data=>{
           this.freeVirtualMachines=data;
+
         },
         error => console.error(error));
+
 
       }
 
@@ -110,6 +114,7 @@ export class TrainingSessionDetailsComponent implements OnInit {
        // this.trainingSession.virtualMachines=this.
         console.log(this.trainingSession.vmIds);
         console.log(this.trainingSession.virtualMachines);
+
 
         this.saveTrainingSession();
       //  console.log(this.trainingSession);

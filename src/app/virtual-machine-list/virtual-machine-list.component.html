@@ -22,6 +22,7 @@
       <th>Product</th>
       <th>Version</th>
       <th>Region</th>
+      <th>Actions</th>
 
     </tr>
   </thead>
@@ -31,6 +32,18 @@
       <td>{{ virtualMachine.product }}</td>
       <td>{{ virtualMachine.version }}</td>
       <td>{{ virtualMachine.region }}</td>
+
+      <td>
+        <button (click)="updateVirtualMachine(virtualMachine.virtualMachineId)" *ngIf="authority === 'manager'"
+          class="btn btn-warning">Update</button>
+
+
+        <button (click)="deleteVirtualMachine(virtualMachine.virtualMachineId)" *ngIf="authority === 'manager'"
+          class="btn btn-danger" style="margin-left: 10px;">Delete</button>
+
+
+
+      </td>
 
 
 

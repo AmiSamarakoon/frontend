@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthGuard } from './services/auth.guard';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -20,7 +20,26 @@ import { UpdateTrainingSessionComponent } from './update-training-session/update
 import { TrainerListComponent } from './trainer-list/trainer-list.component';
 import { AddVirtualMachineComponent } from './add-virtual-machine/add-virtual-machine.component';
 import { VirtualMachineListComponent } from './virtual-machine-list/virtual-machine-list.component';
+import { NgxPermissionsModule } from 'ngx-permissions';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { LeaveApplicationComponent } from './leave-application/leave-application.component';
+import { LeavehomeComponent } from './components/leavehome/leavehome.component';
+import { ChartsModule } from 'ng2-charts';
+import { RouterModule } from '@angular/router';
+import { ListComponent } from './components/task/list/list.component';
+import { NavigationComponent } from './navigation/navigation.component';
+import { AddComponent } from './components/task/add/add.component';
+import { MailComponent } from './components/task/mail/mail.component';
+import { MaterialModule } from './material/material.module';
+import { ShowComponent } from './components/task/show/show.component';
+import { SubordinatesdetailsComponent } from './components/task/subordinatesdetails/subordinatesdetails.component';
+import { LeavemanageComponent } from './leavemanage/leavemanage.component';
 
+import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+import { FooterComponent } from './footer/footer.component';
+import { LeaveloginComponent } from './components/leavelogin/leavelogin.component';
+import { UpdateVirtualMachineComponent } from './update-virtual-machine/update-virtual-machine.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,15 +57,35 @@ import { VirtualMachineListComponent } from './virtual-machine-list/virtual-mach
     TrainerListComponent,
     AddVirtualMachineComponent,
     VirtualMachineListComponent,
+    LeaveApplicationComponent,
+    LeavehomeComponent,
+    ListComponent,
+    NavigationComponent,
+    AddComponent,
+    MailComponent,
+    ShowComponent,
+    SubordinatesdetailsComponent,
+    LeavemanageComponent,
+    FooterComponent,
+    LeaveloginComponent,
+    UpdateVirtualMachineComponent,
 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ChartsModule,
+    ReactiveFormsModule,
+    MaterialModule,
+    NgxPermissionsModule.forRoot(),
+    BrowserAnimationsModule,
+    CalendarModule.forRoot({ provide: DateAdapter, useFactory: adapterFactory })
   ],
+  exports: [RouterModule, ChartsModule, AppRoutingModule, ReactiveFormsModule,],
   providers: [{provide :HTTP_INTERCEPTORS,useClass : AuthInterceptor, multi :true}, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+export class SharedModule { }

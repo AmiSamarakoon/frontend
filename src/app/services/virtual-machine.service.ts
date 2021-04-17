@@ -45,5 +45,13 @@ export class VirtualMachineService {
     return this.httpClient.get<VirtualMachine[]>(`${this.availableVMsForTS}/${trainingSessionId}`)
   }
 
+  updateVirtualMachine(id:number, virtualMachine: VirtualMachine):Observable<Object>{
+    return this.httpClient.put(`${this.baseURL}/${id}`,virtualMachine);
+  }
+
+  deleteVirtualMachine(id:number):Observable<Object>{
+    return this.httpClient.delete(`${this.baseURL}/${id}`);
+  }
+
 
 }
