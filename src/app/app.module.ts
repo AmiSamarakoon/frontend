@@ -40,6 +40,7 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { FooterComponent } from './footer/footer.component';
 import { LeaveloginComponent } from './components/leavelogin/leavelogin.component';
 import { UpdateVirtualMachineComponent } from './update-virtual-machine/update-virtual-machine.component';
+import { VirtualMachineDetailsComponent } from './virtual-machine-details/virtual-machine-details.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -69,6 +70,7 @@ import { UpdateVirtualMachineComponent } from './update-virtual-machine/update-v
     FooterComponent,
     LeaveloginComponent,
     UpdateVirtualMachineComponent,
+    VirtualMachineDetailsComponent,
 
   ],
   imports: [

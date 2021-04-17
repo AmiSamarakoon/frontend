@@ -16,7 +16,6 @@ export class TrainingSessionDetailsComponent implements OnInit {
   trainingSession: TrainingSession;
   tentativeVirtualMachines: any;
   freeVirtualMachines:any;
-  //allVirtualMachines: any;
   start_Date: Date;
 
   virtualMachineId :number = 0;

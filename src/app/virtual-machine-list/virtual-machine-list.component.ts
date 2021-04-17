@@ -62,6 +62,10 @@ export class VirtualMachineListComponent implements OnInit {
     })
   }
 
+  virtualMachineDetails(id: number) {
+    this.router.navigate(['virtual-machine-details', id]);
+  }
+
   updateVirtualMachine(id: number) {
     this.router.navigate(['update-virtual-machine', id]);
   }

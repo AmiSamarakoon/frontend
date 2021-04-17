@@ -34,9 +34,12 @@
       <td>{{ virtualMachine.region }}</td>
 
       <td>
+
+        <button (click)="virtualMachineDetails(virtualMachine.virtualMachineId)" class="btn btn-info"
+          style="margin-left: 10px;">View</button>
+
         <button (click)="updateVirtualMachine(virtualMachine.virtualMachineId)" *ngIf="authority === 'manager'"
           class="btn btn-warning">Update</button>
-
 
         <button (click)="deleteVirtualMachine(virtualMachine.virtualMachineId)" *ngIf="authority === 'manager'"
           class="btn btn-danger" style="margin-left: 10px;">Delete</button>

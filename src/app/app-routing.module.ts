@@ -23,8 +23,7 @@ import { SubordinatesdetailsComponent } from './components/task/subordinatesdeta
 import { LeavemanageComponent } from './leavemanage/leavemanage.component';
 import { LeaveloginComponent } from './components/leavelogin/leavelogin.component';
 import { UpdateVirtualMachineComponent } from './update-virtual-machine/update-virtual-machine.component';
-
-
+import { VirtualMachineDetailsComponent } from './virtual-machine-details/virtual-machine-details.component';
 
 
 
@@ -46,6 +45,7 @@ const routes: Routes = [
   { path :'virtualMachines', component:VirtualMachineListComponent},
   { path: 'leavedetails', component: LeavemanageComponent },
   { path : 'update-virtual-machine/:id', component: UpdateVirtualMachineComponent},
+  { path : 'virtual-machine-details/:id', component: VirtualMachineDetailsComponent},
   {
     path: 'leavemanagement', component: LeaveApplicationComponent,
     children: [
